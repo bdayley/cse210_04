@@ -82,6 +82,8 @@ def main():
         artifact.set_color(color)
         artifact.set_position(position)
         artifact.set_message(message)
+        position = Point(0,FONT_SIZE)
+        artifact.set_velocity(position)
         cast.add_actor("artifacts", artifact)
     
     # start the game
