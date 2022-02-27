@@ -56,6 +56,7 @@ def main():
     with open(DATA_PATH) as file:
         data = file.read()
         messages = data.splitlines()
+    """ Adding Gems and Rocks randomly position on the first line """
     switch = 0
     for n in range(DEFAULT_ARTIFACTS):
         if switch == 0:
@@ -82,6 +83,7 @@ def main():
         artifact.set_color(color)
         artifact.set_position(position)
         artifact.set_message(message)
+        """ Setting the speed of movement for Gems & Rocks """
         position = Point(0,5)
         artifact.set_velocity(position)
         cast.add_actor("artifacts", artifact)
