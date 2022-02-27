@@ -13,9 +13,69 @@ The game continues until the player closes the window.
 
 ## Project Structure
 
+- Director
+  - Methods:
+    - start_game()
+    - get_inputs()
+    - do_updates()
+    - do_outputs()
 
+- Actor
+  - Methods:
+    - get_color()
+    - get_font_size()
+    - get_position()
+    - get_text()
+    - get_velocity()
+    - move_next()
+    - set_color()
+    - set_position()
+    - set_font_size()
+    - set_text()
+    - set_velocity()
 
+- Artifact (Actor)
+  - Methods:
+    - get_message()
+    - set_message()
 
+- Cast
+  - Methods:
+    - add_actor()
+    - get_actors()
+    - get_all_actors()
+    - get_first_actor()
+    - remove_actor()
+
+- Keyboard Service
+  - Methods:
+    - get_direction()
+
+- Video Service
+  - Methods:
+    - close_window()
+    - clear_buffer()
+    - draw_actor()
+    - draw_actors()
+    - flush_buffer()
+    - get_cell_size()
+    - get_height()
+    - get_width()
+    - is_window_open
+    - open_window()
+    - draw_grid()
+    
+- Color
+  - Methods:
+    - to_tuple()
+
+- Point
+  - Methods:
+    - add()
+    - equals()
+    - get_x()
+    - get_y()
+    - scale()
 
 ## Required Technologies
 ---
