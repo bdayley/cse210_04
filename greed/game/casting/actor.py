@@ -75,7 +75,7 @@ class Actor:
         x = (self._position.get_x() + self._velocity.get_x()) % max_x
         y = (self._position.get_y() + self._velocity.get_y()) % max_y
         self._position = Point(x, y)
-        return self._position
+        return self._position # this is needed for artifacts to move
 
     def set_color(self, color):
         """Updates the color to the given one.

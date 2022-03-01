@@ -17,7 +17,11 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
-        self._first = 0
+        #self._first = 0
+        # beginning of changes ------
+        self._score = 0
+        # end of changes ------
+
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
 
@@ -51,14 +55,18 @@ class Director:
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
-
-        banner.set_text("")
+        
+        # beginning of changes
+        banner.set_text("Score: " + str(self._score))
+        # end of changes
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
-        position = (0,0)
+        
+        #position = (0,0)
         """ Check if the player (robot) intersect with a Gem or Rock 
             If it doesn't keep moving forward
+        """
         """
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
@@ -67,7 +75,18 @@ class Director:
             else:
                 position = artifact.move_next(max_x,max_y)
                 artifact.set_position(position)
-           
+        """
+        # beginning of changes ------
+        for artifact in artifacts:
+            if robot.get_position().equals(artifact.get_position()):
+                message = artifact.get_message()
+                self._score += message # add to score
+                banner.set_text("Score: " + str(self._score)) #add score to message
+                cast.remove_actor("artifacts", artifact) # remove artifact if hit
+            art_move = artifact.move_next(max_x, max_y)
+            artifact.set_position(art_move)
+        # end of changes ------
+
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         

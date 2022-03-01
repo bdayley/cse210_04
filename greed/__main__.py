@@ -42,7 +42,9 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(MAX_Y / 9)
+    y = int(MAX_Y / 2)
+        # MAX_Y should put it at the bottom of the screen, right? 
+        # but it doesn't...
     position = Point(x, y)
 
     robot = Actor()
@@ -53,12 +55,34 @@ def main():
     cast.add_actor("robots", robot)
     
     # create the artifacts
+    """
     with open(DATA_PATH) as file:
         data = file.read()
         messages = data.splitlines()
-    """ Adding Gems and Rocks randomly position on the first line """
-    switch = 0
+    """
+
+    #""" Adding Gems and Rocks randomly position on the first line """
+    #switch = 0
     for n in range(DEFAULT_ARTIFACTS):
+        # beginning of changes ------
+        # random number to draw gem or rock
+        rand_num = random.randint(1,2)
+        if rand_num == 1: 
+            text = '*'
+        else:
+            text = 'O'
+        # set message of gems and rock to use for score
+        if text == '*':
+            message = 1
+        else:
+            message = -1
+        x = random.randint(1, COLS - 1)
+        y = 0 # artifacts start from the top 
+        position = Point(x, y)
+        position = position.scale(CELL_SIZE)
+        # end of changes ------
+
+        """
         if switch == 0:
            text = chr(42)
            switch = 1
@@ -71,7 +95,7 @@ def main():
         y = random.randint(1, 1)
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
-
+        """
         r = random.randint(0, 255)
         g = random.randint(0, 255)
         b = random.randint(0, 255)
@@ -83,9 +107,18 @@ def main():
         artifact.set_color(color)
         artifact.set_position(position)
         artifact.set_message(message)
-        """ Setting the speed of movement for Gems & Rocks """
-        position = Point(0,5)
-        artifact.set_velocity(position)
+
+        #""" Setting the speed of movement for Gems & Rocks """
+        #position = Point(0,5)
+        #artifact.set_velocity(position)
+
+        # beginning of changes ------
+        # add movement to artifacts, random velocity
+        dx = 0
+        dy = random.randint(2, 4)
+        velocity = Point(dx, dy)
+        artifact.set_velocity(velocity)
+        # end of changes ------
         cast.add_actor("artifacts", artifact)
     
     # start the game

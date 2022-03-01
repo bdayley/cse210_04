@@ -34,12 +34,17 @@ class KeyboardService:
         
         if pyray.is_key_down(pyray.KEY_RIGHT):
             dx = 1
-        
+
+        # beginning of changes ------    
+        # only need to move left and right
+        """
         if pyray.is_key_down(pyray.KEY_UP):
             dy = -1
         
         if pyray.is_key_down(pyray.KEY_DOWN):
             dy = 1
+        """
+        # end of changes ------
 
         direction = Point(dx, dy)
         direction = direction.scale(self._cell_size)
