@@ -64,18 +64,7 @@ class Director:
         robot.move_next(max_x, max_y)
         
         #position = (0,0)
-        """ Check if the player (robot) intersect with a Gem or Rock 
-            If it doesn't keep moving forward
-        """
-        """
-        for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(message)  
-            else:
-                position = artifact.move_next(max_x,max_y)
-                artifact.set_position(position)
-        """
+
         # beginning of changes ------
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):

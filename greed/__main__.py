@@ -82,20 +82,6 @@ def main():
         position = position.scale(CELL_SIZE)
         # end of changes ------
 
-        """
-        if switch == 0:
-           text = chr(42)
-           switch = 1
-        else:
-            text = chr(79)
-            switch = 0
-        message = messages[n]
-
-        x = random.randint(1, COLS - 1)
-        y = random.randint(1, 1)
-        position = Point(x, y)
-        position = position.scale(CELL_SIZE)
-        """
         r = random.randint(0, 255)
         g = random.randint(0, 255)
         b = random.randint(0, 255)
